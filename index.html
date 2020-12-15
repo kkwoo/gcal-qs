@@ -133,7 +133,10 @@
       }
 
     </script>
-
+    <!--
+      https://stackoverflow.com/questions/48173424/script-async-defer-onload-usage-in-googles-api-javascript-samples
+      -->
+      
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
