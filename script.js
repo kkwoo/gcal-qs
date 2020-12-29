@@ -1,6 +1,6 @@
       // Client ID and API key from the Developer Console
       var CLIENT_ID = '245081219628-0q3biau2u13ga5j6pinj3f31uq86l0tu.apps.googleusercontent.com';
-      var API_KEY = 'AIzaSyCzMHoOZ_wGQmcMwbqsdEDVYwD-4dBoiUM';
+      // var API_KEY = 'AIzaSyCzMHoOZ_wGQmcMwbqsdEDVYwD-4dBoiUM';
 
       // Array of API discovery doc URLs for APIs used by the quickstart
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -25,7 +25,7 @@
        */
       function initClient() {
         gapi.client.init({
-          apiKey: API_KEY,
+          // apiKey: API_KEY,
           clientId: CLIENT_ID,
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES
@@ -91,7 +91,7 @@
       function listUpcomingEvents() {
         gapi.client.calendar.events.list({
           'calendarId': 'primary',
-          'timeMin': (new Date()).toISOString(),
+          'timeMin': (new Date(1.6091e12)).toISOString(),
           'showDeleted': false,
           'singleEvents': true,
           'maxResults': 10,
@@ -103,7 +103,8 @@
           if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
               var event = events[i];
-              var when = event.start.dateTime;
+              var when = "Start - " + event.start.dateTime +
+                ", End - " + event.end.dateTime;
               if (!when) {
                 when = event.start.date;
               }
